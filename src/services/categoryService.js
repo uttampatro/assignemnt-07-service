@@ -6,8 +6,8 @@ const createCategory = async ({ name, sequence }) => {
     return category;
 };
 
-const fetchAllCategory = async () => {
-    const category = await Category.find();
+const fetchAllCategory = async sequence => {
+    const category = await Category.find().sort({ sequence });
     return category;
 };
 

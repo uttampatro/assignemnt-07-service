@@ -27,8 +27,8 @@ const createItem = async ({
     return item;
 };
 
-const fetchAllItem = async () => {
-    const itemList = await Item.find();
+const fetchAllItem = async sequence => {
+    const itemList = await Item.find().sort({ sequence });
     return itemList;
 };
 

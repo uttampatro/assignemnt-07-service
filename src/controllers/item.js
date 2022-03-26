@@ -39,6 +39,7 @@ const getAllItem = async (req, res) => {
         const itemList = await fetchAllItem();
         return res.json(itemList);
     } catch (error) {
+        console.log(error);
         return res.status(500).json({
             success: false,
             message: 'Something went wrong',
@@ -75,7 +76,6 @@ const updatingItem = async (req, res) => {
         );
         return res.json(item);
     } catch (error) {
-        console.log(error);
         return res.status(500).json({
             success: false,
             message: 'Something went wrong',
