@@ -1,7 +1,7 @@
 const Category = require('../entity/Category');
 
-const createCategory = async ({ name }) => {
-    const category = new Category({ name });
+const createCategory = async ({ name, sequence }) => {
+    const category = new Category({ name, sequence });
     await category.save();
     return category;
 };
@@ -16,10 +16,11 @@ const deleteCategory = async _id => {
     return category;
 };
 
-const updateCategory = async (_id, { name }) => {
+const updateCategory = async (_id, { name, sequence }) => {
     const category = await Category.findById(_id);
 
     category.name = name || category.name;
+    category.sequence = sequence || category.sequence;
     await category.save();
     return category;
 };

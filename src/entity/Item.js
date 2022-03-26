@@ -4,7 +4,7 @@ const Schema = mongoose.Schema;
 const itemSchema = new Schema({
     name: {
         type: String,
-        unique: true,
+        // unique: true,
         required: true,
         max: 255,
         min: 3,
@@ -31,7 +31,21 @@ const itemSchema = new Schema({
         max: 255,
         min: 3,
     },
-    category_id: { type: Schema.Types.ObjectId, ref: 'category' },
+    sequence: {
+        type: Number,
+        required: true,
+        unique: true,
+    },
+    category_id: {
+        type: Schema.Types.ObjectId,
+        ref: 'category',
+    },
+    optionGroups: [
+        {
+            type: Schema.Types.ObjectId,
+            ref: 'optionGroup',
+        },
+    ],
 });
 
 module.exports = mongoose.model('item', itemSchema);

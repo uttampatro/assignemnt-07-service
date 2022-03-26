@@ -8,7 +8,8 @@ const {
 const creatingCategory = async (req, res) => {
     try {
         const name = req.body.name;
-        const category = await createCategory({ name });
+        const sequence = req.body.sequence;
+        const category = await createCategory({ name, sequence });
         return res.json(category);
     } catch (error) {
         console.log(error);
@@ -51,7 +52,8 @@ const updatingCategory = async (req, res) => {
     try {
         const id = req.params.id;
         const name = req.body.name;
-        const category = await updateCategory({ _id: id }, { name });
+        const sequence = req.body.sequence;
+        const category = await updateCategory({ _id: id }, { name, sequence });
         return res.json(category);
     } catch (error) {
         console.log(error);

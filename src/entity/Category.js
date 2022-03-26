@@ -1,5 +1,4 @@
 const mongoose = require('mongoose');
-const Item = require('./Item');
 const Schema = mongoose.Schema;
 
 const categorySchema = new Schema({
@@ -8,6 +7,11 @@ const categorySchema = new Schema({
         required: true,
         max: 255,
         min: 3,
+    },
+    sequence: {
+        type: Number,
+        required: true,
+        unique: true,
     },
     items: [
         {

@@ -13,6 +13,7 @@ const creatingItem = async (req, res) => {
         const cost = req.body.cost;
         const discount = req.body.discount;
         const category_id = req.body.category_id;
+        const sequence = req.body.sequence;
 
         const item = await createItem({
             name,
@@ -20,6 +21,7 @@ const creatingItem = async (req, res) => {
             image_url,
             cost,
             discount,
+            sequence,
             category_id,
         });
         return res.json(item);
@@ -65,9 +67,11 @@ const updatingItem = async (req, res) => {
         const image_url = req.body.image_url;
         const cost = req.body.cost;
         const discount = req.body.discount;
+        const sequence = req.body.sequence;
+
         const item = await updateItem(
             { _id: id },
-            { name, description, image_url, cost, discount }
+            { name, description, image_url, cost, discount, sequence }
         );
         return res.json(item);
     } catch (error) {
